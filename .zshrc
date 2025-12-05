@@ -31,12 +31,13 @@ export NVM_DIR="$HOME/.nvm"
 
 # Init `pyenv`
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init -)"
 
 # ZSH uses the hash symbol `#` as a glob, which breaks my usecases of commenting out lines in a terminal 
 unsetopt extended_glob
 setopt interactive_comments
 
-# Used for `uv` python tool
-. "$HOME/.cargo/env"
+# Load mise only if installed
+if [ -x "$HOME/.local/bin/mise" ]; then
+  eval "$($HOME/.local/bin/mise activate zsh)"
+fi
