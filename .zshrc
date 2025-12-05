@@ -12,6 +12,11 @@ alias ll="ls -al"
 # Show where you copy
 alias cp="cp -v"
 
+# Create `alert` if it does not exist
+if ! type alert &>/dev/null; then
+  alias alert='echo -e "\a"'
+fi
+
 alias gitfpa="git fetch --prune --all"
 
 # Custom prompt to show full path to current working directory
